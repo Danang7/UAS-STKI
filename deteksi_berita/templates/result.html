@@ -68,13 +68,19 @@
                      </div>
                      <div class="row mb-4">
                          <div class="col">
-                             {% if prediction==0 %}
+                             {% if 1 in prediction: %}
                              <div class="container p-3" style="background-color: #ffa6a6;">
                                  <p class="fw-bold">Hasil Deteksi : Berita Hoax!</p>
+                                 {% if prediction|length < 5 %}
+                                 <p class="fw-bold"><i class="fa-solid fa-warning" style="margin-right:7px;"></i>Karena naskah yang diinput terlalu pendek, maka hasil dapat salah dan tidak valid.</p>
+                                 {% endif %}
                              </div>
-                             {% elif prediction==1 %}
+                             {% else %}
                              <div class="container p-3" style="background-color: #bdffc6;">
                                  <p class="fw-bold">Hasil Deteksi : Bukan Berita Hoax!</p>
+                                 {% if prediction|length < 5 %}
+                                 <p class="fw-bold"><i class="fa-solid fa-warning" style="margin-right:7px;"></i>Karena naskah yang diinput terlalu pendek, maka hasil dapat salah dan tidak valid.</p>
+                                 {% endif %}
                              </div>
                              {% endif %}
                          </div>
